@@ -46,7 +46,7 @@
         </div>
         
         <div class="footer-bottom">
-            <p>&copy; 2024 EventHub. All rights reserved.</p>
+            <p>&copy; 2024 EventHub. All rights reserved by OficialAsif.</p>
             <div class="footer-bottom-links">
                 <a href="<?= getBaseUrl() ?>privacy.php">Privacy Policy</a>
                 <a href="<?= getBaseUrl() ?>terms.php">Terms of Service</a>

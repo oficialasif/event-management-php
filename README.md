@@ -2,6 +2,8 @@
 
 A complete, modern event management website built with HTML, CSS, JavaScript, PHP, and MySQL. Features a responsive design, dark/light mode toggle, and both user and admin panels.
 
+**© 2024 EventHub. All rights reserved by OficialAsif.**
+
 ## 🚀 Features
 
 ### Frontend (User Side)
@@ -75,15 +77,7 @@ For location features, add your Google Maps API key in `event-details.php`:
 <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
 ```
 
-## 👥 Demo Accounts
 
-### Admin Account
-- **Email:** admin@eventhub.com
-- **Password:** admin123
-
-### User Account
-- **Email:** john@example.com
-- **Password:** user123
 
 ## 📁 Project Structure
 
@@ -229,4 +223,4 @@ To update the application:
 
 ---
 
-**Built with ❤️ using modern web technologies** 
+**All rights reserved by OficialAsif** 
