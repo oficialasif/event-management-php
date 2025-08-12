@@ -55,6 +55,7 @@ jobs:
         cp -r database docs/
         cp *.php docs/
         cp *.md docs/
+        cp favicon.ico docs/
         
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
