@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="copyright" content="© 2024 EventHub. All rights reserved by OficialAsif.">
+    <title>EventHub - Modern Event Management Platform</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .landing-page {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .landing-content {
+            background: white;
+            border-radius: 20px;
+            padding: 60px;
+            max-width: 800px;
+            width: 100%;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 20px;
+        }
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: #6366f1;
+            margin-bottom: 30px;
+        }
+        .hero-description {
+            font-size: 1.1rem;
+            color: #64748b;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        .feature-card {
+            background: #f8fafc;
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid #e2e8f0;
+            transition: transform 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #6366f1, #f59e0b);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.5rem;
+            color: white;
+        }
+        .feature-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 10px;
+        }
+        .feature-description {
+            color: #64748b;
+            line-height: 1.5;
+        }
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 40px 0;
+        }
+        .cta-btn {
+            padding: 15px 30px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .cta-btn-primary {
+            background: linear-gradient(135deg, #6366f1, #f59e0b);
+            color: white;
+        }
+        .cta-btn-secondary {
+            background: white;
+            color: #6366f1;
+            border: 2px solid #6366f1;
+        }
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .info-section {
+            background: #f8fafc;
+            padding: 40px;
+            border-radius: 15px;
+            margin: 40px 0;
+            text-align: left;
+        }
+        .info-section h3 {
+            color: #1e293b;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .info-item {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+        }
+        .info-item h4 {
+            color: #1e293b;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .info-item h4 i {
+            color: #6366f1;
+        }
+        .info-item ul {
+            color: #64748b;
+            line-height: 1.6;
+            margin: 0;
+            padding-left: 20px;
+        }
+        .footer {
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid #e2e8f0;
+            text-align: center;
+        }
+        .footer p {
+            color: #64748b;
+            margin-bottom: 20px;
+        }
+        .social-links {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: #6366f1;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+        .social-link:hover {
+            transform: translateY(-2px);
+        }
+        @media (max-width: 768px) {
+            .landing-content {
+                padding: 40px 20px;
+            }
+            .hero-title {
+                font-size: 2rem;
+            }
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            .cta-btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="landing-page">
+        <div class="landing-content">
+            <h1 class="hero-title">EventHub</h1>
+            <h2 class="hero-subtitle">Modern Event Management Platform</h2>
+            <p class="hero-description">
+                A complete, modern event management website built with HTML, CSS, JavaScript, PHP, and MySQL. 
+                Features a responsive design, dark/light mode toggle, and both user and admin panels.
+            </p>
+            
+            <div class="cta-buttons">
+                <a href="https://github.com/oficialasif/event-management-php" class="cta-btn cta-btn-primary">
+                    <i class="fab fa-github"></i>
+                    View on GitHub
+                </a>
+                <a href="https://github.com/oficialasif/event-management-php/archive/refs/heads/main.zip" class="cta-btn cta-btn-secondary">
+                    <i class="fas fa-download"></i>
+                    Download Source
+                </a>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Responsive Design</h3>
+                    <p class="feature-description">Works perfectly on desktop, tablet, and mobile devices</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3 class="feature-title">Dark/Light Mode</h3>
+                    <p class="feature-description">Toggle between dark and light themes with persistent preference</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="feature-title">User Management</h3>
+                    <p class="feature-description">Complete user authentication and registration system</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Admin Dashboard</h3>
+                    <p class="feature-description">Comprehensive admin panel for event and user management</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <h3 class="feature-title">Payment Integration</h3>
+                    <p class="feature-description">Secure payment processing for event registrations</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3 class="feature-title">Real-time Search</h3>
+                    <p class="feature-description">Advanced search and filtering capabilities</p>
+                </div>
+            </div>
+            
+            <div class="info-section">
+                <h3>🚀 Key Features</h3>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <h4><i class="fas fa-calendar"></i> Event Management</h4>
+                        <ul>
+                            <li>Create, edit, and delete events</li>
+                            <li>Event categories and filtering</li>
+                            <li>Event details with countdown timer</li>
+                            <li>Image upload for event banners</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-item">
+                        <h4><i class="fas fa-user-shield"></i> User System</h4>
+                        <ul>
+                            <li>User registration and login</li>
+                            <li>Profile management</li>
+                            <li>Ticket management</li>
+                            <li>Registration history</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-item">
+                        <h4><i class="fas fa-cog"></i> Admin Panel</h4>
+                        <ul>
+                            <li>Dashboard with statistics</li>
+                            <li>User and event management</li>
+                            <li>Payment tracking</li>
+                            <li>Registration management</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-item">
+                        <h4><i class="fas fa-database"></i> Technical Stack</h4>
+                        <ul>
+                            <li>PHP 7.4+ with MySQL</li>
+                            <li>Responsive CSS with Flexbox/Grid</li>
+                            <li>JavaScript for interactivity</li>
+                            <li>Secure authentication system</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="info-section">
+                <h3>🛠️ Installation Guide</h3>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <h4><i class="fas fa-download"></i> Step 1: Clone Repository</h4>
+                        <code style="background: #e2e8f0; padding: 10px; border-radius: 5px; display: block; margin: 10px 0; font-family: monospace;">
+                            git clone https://github.com/oficialasif/event-management-php.git
+                        </code>
+                    </div>
+                    
+                    <div class="info-item">
+                        <h4><i class="fas fa-database"></i> Step 2: Database Setup</h4>
+                        <ul>
+                            <li>Create MySQL database 'eventmanagement'</li>
+                            <li>Import database/setup.sql</li>
+                            <li>Update config/database.php credentials</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-item">
+                        <h4><i class="fas fa-server"></i> Step 3: Web Server</h4>
+                        <ul>
+                            <li>Place in web server document root</li>
+                            <li>Set proper file permissions</li>
+                            <li>Access via localhost/eventmanagement</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-item">
+                        <h4><i class="fas fa-key"></i> Default Credentials</h4>
+                        <ul>
+                            <li><strong>Admin Email:</strong> admin@eventhub.com</li>
+                            <li><strong>Admin Password:</strong> admin123</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer">
+                <div class="social-links">
+                    <a href="https://facebook.com/OficialAsif" class="social-link" target="_blank">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="https://twitter.com/oficialasif" class="social-link" target="_blank">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://instagram.com/oficialasif" class="social-link" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/oficialasif" class="social-link" target="_blank">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+                <p><strong>© 2024 EventHub. All rights reserved by OficialAsif.</strong></p>
+                <p>Address: YKSG 1, Daffodil International University, Dhaka, Bangladesh</p>
+                <p>Phone: 0173718**** | Email: info@eventhub.com</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 
