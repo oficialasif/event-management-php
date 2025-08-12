@@ -6,13 +6,28 @@ on:
   pull_request:
     branches: [ main ]
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
   deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
+      
+    - name: Setup Pages
+      uses: actions/configure-pages@v4
       
     - name: Setup PHP
       uses: shivammathur/setup-php@v2
@@ -20,7 +35,7 @@ jobs:
         php-version: '8.1'
         
     - name: Setup Node.js
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
         node-version: '18'
         
@@ -41,113 +56,11 @@ jobs:
         cp *.php docs/
         cp *.md docs/
         
-        # Create index.html for GitHub Pages
-        cat > docs/index.html << 'EOF'
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <meta name="copyright" content="© 2024 EventHub. All rights reserved by OficialAsif.">
-            <title>EventHub - Modern Event Management Platform</title>
-            <link rel="stylesheet" href="assets/css/style.css">
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-            <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-        </head>
-        <body>
-            <div style="text-align: center; padding: 50px; font-family: 'Inter', sans-serif;">
-                <h1 style="color: #6366f1; margin-bottom: 20px;">EventHub</h1>
-                <h2 style="color: #1e293b; margin-bottom: 30px;">Modern Event Management Platform</h2>
-                <p style="color: #64748b; margin-bottom: 40px; font-size: 18px;">
-                    A complete, modern event management website built with HTML, CSS, JavaScript, PHP, and MySQL.
-                </p>
-                
-                <div style="background: #f8fafc; padding: 30px; border-radius: 10px; margin-bottom: 30px;">
-                    <h3 style="color: #1e293b; margin-bottom: 20px;">🚀 Features</h3>
-                    <ul style="text-align: left; max-width: 600px; margin: 0 auto; color: #64748b;">
-                        <li>Modern Responsive Design</li>
-                        <li>Dark/Light Mode Toggle</li>
-                        <li>User Authentication & Registration</li>
-                        <li>Admin Dashboard</li>
-                        <li>Event Management</li>
-                        <li>Payment Integration</li>
-                        <li>Real-time Search</li>
-                        <li>Social Media Integration</li>
-                    </ul>
-                </div>
-                
-                <div style="background: #f8fafc; padding: 30px; border-radius: 10px; margin-bottom: 30px;">
-                    <h3 style="color: #1e293b; margin-bottom: 20px;">📋 Requirements</h3>
-                    <ul style="text-align: left; max-width: 600px; margin: 0 auto; color: #64748b;">
-                        <li>PHP 7.4 or higher</li>
-                        <li>MySQL 5.7 or higher</li>
-                        <li>Apache/Nginx web server</li>
-                        <li>XAMPP, WAMP, or similar local development environment</li>
-                    </ul>
-                </div>
-                
-                <div style="background: #f8fafc; padding: 30px; border-radius: 10px; margin-bottom: 30px;">
-                    <h3 style="color: #1e293b; margin-bottom: 20px;">🛠️ Installation</h3>
-                    <div style="text-align: left; max-width: 600px; margin: 0 auto; color: #64748b;">
-                        <p><strong>1. Clone the Repository:</strong></p>
-                        <code style="background: #e2e8f0; padding: 5px 10px; border-radius: 5px; display: block; margin: 10px 0;">
-                            git clone https://github.com/oficialasif/event-management-php.git
-                        </code>
-                        
-                        <p><strong>2. Database Setup:</strong></p>
-                        <ul>
-                            <li>Create a MySQL database named 'eventmanagement'</li>
-                            <li>Import the database structure from 'database/setup.sql'</li>
-                            <li>Update database credentials in 'config/database.php'</li>
-                        </ul>
-                        
-                        <p><strong>3. Web Server Setup:</strong></p>
-                        <ul>
-                            <li>Place the project in your web server's document root</li>
-                            <li>Ensure proper file permissions</li>
-                            <li>Access via localhost/eventmanagement</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div style="background: #f8fafc; padding: 30px; border-radius: 10px; margin-bottom: 30px;">
-                    <h3 style="color: #1e293b; margin-bottom: 20px;">🔑 Default Credentials</h3>
-                    <div style="text-align: left; max-width: 600px; margin: 0 auto; color: #64748b;">
-                        <p><strong>Admin Login:</strong></p>
-                        <ul>
-                            <li>Email: admin@eventhub.com</li>
-                            <li>Password: admin123</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div style="background: #f8fafc; padding: 30px; border-radius: 10px; margin-bottom: 30px;">
-                    <h3 style="color: #1e293b; margin-bottom: 20px;">📞 Contact</h3>
-                    <div style="color: #64748b;">
-                        <p><strong>Address:</strong> YKSG 1, Daffodil International University, Dhaka, Bangladesh</p>
-                        <p><strong>Phone:</strong> 0173718****</p>
-                        <p><strong>Email:</strong> info@eventhub.com</p>
-                    </div>
-                </div>
-                
-                <div style="margin-top: 40px; padding-top: 30px; border-top: 1px solid #e2e8f0;">
-                    <p style="color: #64748b; margin-bottom: 10px;">
-                        <strong>© 2024 EventHub. All rights reserved by OficialAsif.</strong>
-                    </p>
-                    <div style="margin-top: 20px;">
-                        <a href="https://github.com/oficialasif/event-management-php" style="background: #6366f1; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; margin: 0 10px;">
-                            <i class="fab fa-github"></i> View on GitHub
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </body>
-        </html>
-        EOF
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: ./docs
         
     - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      if: github.ref == 'refs/heads/main'
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./docs 
+      id: deployment
+      uses: actions/deploy-pages@v4 
